@@ -1,0 +1,33 @@
+
+import {configureStore} from "@reduxjs/toolkit"
+
+function reducerFunction(state={counter:100,arr:["pune","mumbai"]},action)
+{
+    if(action.type == "PUSH")
+    {
+        let x = action.data
+        let arr2 = [...state.arr]
+        arr2.push(x)
+        return{...state,arr:arr2}
+    }
+    if(action.type == "INCR")
+    {
+        let x = state.counter
+        x++
+        return{...state,counter:x}
+        
+    }
+    if(action.type == "DNCR")
+    {
+        let x = state.counter
+        x--
+        return{...state,counter:x}
+        
+    }
+
+    return state
+
+}
+
+let mystoreRedux = configureStore({reducer:reducerFunction})
+export default mystoreRedux;
